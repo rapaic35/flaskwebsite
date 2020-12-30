@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% include "includes/profilebar.html" %}
+{% if sonucdict["type"] == "GraphVideo" %}
+    <div class="container h-100" style= "height:70%;width:70%">    
+        <div class="align-items-center text-center" style="height:300px;margin-top:5%">
+            <a href="{{sonucdict['mediaUrl']}}" download><button class="btn btn-success btn-lg">Download</button></a>
+            <div class="embed-responsive embed-responsive-4by3 mt-2">
+                <iframe class="embed-responsive-item" src="{{sonucdict['mediaUrl']}}" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+{% elif sonucdict["type"] == "GraphImage" %}
+    <div class="align-items-center text-center" style="margin-top:5%">
+        <a href="{{sonucdict['mediaUrl']}}" download><button class="btn btn-success btn-lg">Download</button></a> 
+    </div>
+    <div class="align-items-center text-center mt-2" style="height:50vh">
+        <img src="{{sonucdict['mediaUrl']}}" class="img-responsive wh-100" style="height:500px" alt="img"> 
+    </div>
+
+
+{% elif sonucdict["type"] == "GraphSidecar" %}
+
+    <ul class="list-group mr-auto ml-auto" style="margin-top:5%;width:600px">
+    {% for media in sonucdict['mediaUrl'] %}
+            <li class="list-group-item">
+                <div class="align-items-center text-center" style="height:50vh">
+                    <img src="{{media}}" class="img-responsive wh-100" style="height:100%" alt="img"> 
+                </div>
+                <div class="align-items-center text-center mt-2">
+                    <a href="{{media}}" download><button class="btn btn-success btn-lg">Download</button></a> 
+                </div>
+            </li>    
+    {% endfor %}
+    </ul>  
+{% endif %}
+
+{% endblock body %}
+
+<!--
+
+    <div class="align-items-center text-center" style="margin-top:10%">
+        <a href="{{medialink}}" download><button class="buton btndownload">Download</button></a> 
+    </div>
+    <ul class="list-group">
+    {% for media in mediaUrl %}
+            <li class="list-group-item">
+                <div class="align-items-center text-center" style="height:50vh">
+                    <img src={{medialink}} class="img-responsive" style="height:500px" alt="img"> 
+                </div>
+            </li>    
+    {% endfor %}
+    </ul>  
+
+!-->

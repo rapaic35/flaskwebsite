@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container">
+    <div class="card bg-light" id="kart" style="margin-top:10%;">
+        <div class="card-body">
+            <div>
+                <div class="col-xs-12 ">
+                    <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">HD Video İndir</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/photodownload">HD Fotoğraf İndir</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/storydownload">Story İndir</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/postinfodownload">Post Bilgisi Getir</a>
+                    </li>
+                    </ul>
+                    <hr>
+                    <form method="post">
+                        <div class="form-group">
+                            <label>Fotoğraf Linki</label>
+                            <input type="link" class="form-control" name = "medialink" id="medialink" placeholder="https://www.instagram.com/p/XXXXXXXXXX/" required>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary">Fotoğraf İndir</button>
+                    </form>                                        
+                </div>
+            </div>
+                <br>
+                {% include "includes/messages.html" %}  
+        </div>
+    </div>
+</div>
+{% endblock body %}

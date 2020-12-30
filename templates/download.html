@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% if sonucdict["type"] == "GraphVideo" %}
+<div class="container"  style="background-color:#ecf0f1">
+    <div class="d-flex justify-content-center mt-5">
+        <div class="align-items-center">
+            <div class="row">
+                <div class="col">
+                    <div class="ml-auto">
+                        {% include "includes/profilebar.html" %}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card d-flex flex-column align-items-center p-3 mr-auto" style="width:500px">
+                        <a href="{{sonucdict['mediaUrl']}}" download><button class="btn btn-success btn-lg">Download</button></a> 
+                        <div class="embed-responsive embed-responsive-4by3 mt-2">
+                            <iframe class="embed-responsive-item" src="{{sonucdict['mediaUrl']}}" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% elif sonucdict["type"] == "GraphImage" %}
+
+<div class="container"  style="background-color:#ecf0f1">
+    <div class="d-flex justify-content-center mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="ml-auto">
+                    {% include "includes/profilebar.html" %}
+                </div>
+            </div>
+            <div class="col">
+                <div class="card d-flex flex-column align-items-center p-3 mr-auto" style="width:500px">
+                    <a href="{{sonucdict['mediaUrl']}}" download><button class="btn btn-success btn-lg">Download</button></a> 
+                    <div class=" embed-responsive mt-2">
+                        <img src="{{sonucdict['mediaUrl']}}" class="card-img-top" alt="img"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% elif sonucdict["type"] == "GraphSidecar" %}
+
+<div class="container" style="background-color:#ecf0f1">
+    <div class="d-flex justify-content-center mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="ml-auto">
+                    {% include "includes/profilebar.html" %}
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column">
+                    <ul class="list-group mr-auto ml-auto" style="width:500px">
+                    {% for media in sonucdict['mediaUrl'] %}
+                        <li class="list-group-item">
+                            <div class="align-items-center text-center" style="height:50vh">
+                                <img src="{{media}}" class="img-responsive wh-100" style="height:100%" alt="img"> 
+                            </div>
+                            <div class="align-items-center text-center mt-2">
+                                <a href="{{sonucdict['mediaUrl']}}" download><button class="btn btn-success btn-lg">Download</button></a> 
+                            </div>
+                        </li>    
+                    {% endfor %}
+                    </ul>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock body %}
+
